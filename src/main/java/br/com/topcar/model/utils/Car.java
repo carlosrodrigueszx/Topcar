@@ -1,7 +1,5 @@
 package br.com.topcar.model.utils;
 
-import java.time.LocalDate;
-
 public class Car {
     private String nome;
     private int ano;
