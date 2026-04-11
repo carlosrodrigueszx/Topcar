@@ -8,17 +8,17 @@ import java.time.LocalDate;
 public class Peca {
     private int id;
     private String nome;
-    private BigDecimal valorTotal;
+    private BigDecimal valor;
     private LocalDate data_fabricacao;
     private Car carro;
 
     public Peca() {
     }
 
-    public Peca(int id, String nome, BigDecimal valorTotal, LocalDate data_fabricacao, Car carro) {
+    public Peca(int id, String nome, BigDecimal valor, LocalDate data_fabricacao, Car carro) {
         this.id = id;
         this.nome = nome;
-        this.valorTotal = valorTotal;
+        this.valor = valor;
         this.data_fabricacao = data_fabricacao;
         this.carro = carro;
     }
@@ -39,12 +39,12 @@ public class Peca {
         this.nome = nome;
     }
 
-    public BigDecimal getValorTotal() {
-        return valorTotal;
+    public BigDecimal getValor() {
+        return valor;
     }
 
-    public void setValorTotal(BigDecimal valorTotal) {
-        this.valorTotal = valorTotal;
+    public void setValor(BigDecimal valor) {
+        this.valor = valor;
     }
 
     public LocalDate getData_fabricacao() {
@@ -68,7 +68,7 @@ public class Peca {
         return "Peca{" +
                 "id=" + id +
                 ", nome='" + nome + '\'' +
-                ", valorTotal=" + valorTotal +
+                ", valor=" + valor +
                 ", data_fabricacao=" + data_fabricacao +
                 ", carro=" + carro +
                 '}';

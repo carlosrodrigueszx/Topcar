@@ -15,7 +15,7 @@ public class testeCompra {
         Car car1 = new Car("Crossfox", LocalDate.now().getYear(), "Sport");
         Peca p1 = new Peca(1, "Amortecedor TheBest", BigDecimal.valueOf(200.0), LocalDate.now(), car1);
 
-        ItemPedido itemPedido = new ItemPedido(p1, 2);
+        ItemPedido itemPedido = new ItemPedido(p1, 2, BigDecimal.valueOf(15));
         // Itens que vou cadastrar no Pedido
         List<ItemPedido> listaItens = new ArrayList<>();
         listaItens.add(itemPedido);

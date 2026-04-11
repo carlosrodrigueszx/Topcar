@@ -3,11 +3,12 @@ package br.com.topcar.model;
 import br.com.topcar.service.interfaces.strategy.iPromoStrategy;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 public class ItemPedido implements iPromoStrategy {
     private Peca peca;
     private int quantidade;
-    private BigDecimal valorItem;
+    private BigDecimal valorTotal;
     private BigDecimal desconto;
 
     public ItemPedido() {
@@ -16,20 +17,25 @@ public class ItemPedido implements iPromoStrategy {
     public ItemPedido(Peca peca, int quantidade) {
         this.peca = peca;
         this.quantidade = quantidade;
-        this.valorItem = peca.getValorTotal().multiply(BigDecimal.valueOf(quantidade));
+        this.valorTotal = peca.getValor().multiply(BigDecimal.valueOf(quantidade));
         this.desconto = BigDecimal.ZERO;
     }
 
     public ItemPedido(Peca peca, int quantidade, BigDecimal desconto) {
         this.peca = peca;
         this.quantidade = quantidade;
-        this.valorItem = aplicarDesconto(desconto);
+        this.valorTotal = BigDecimal.valueOf((double)this.quantidade).multiply(aplicarDesconto(desconto));
+        this.desconto = aplicarDesconto(desconto);
     }
 
     @Override
     public BigDecimal aplicarDesconto(BigDecimal percentual) {
-        BigDecimal valorDescontado = this.peca.getValorTotal().multiply(percentual);
-        return this.peca.getValorTotal().subtract(valorDescontado);
+        percentual = percentual.divide(BigDecimal.valueOf(100), 2, RoundingMode.HALF_UP);
+        BigDecimal valorDesconto = this.peca.getValor().multiply(percentual);
+        System.out.println("\n percentual de desconto: " + percentual);
+        System.out.println("\n valor desconto: " + valorDesconto);
+        System.out.println("\n valor com desconto: " + this.peca.getValor().subtract(valorDesconto));
+        return this.peca.getValor().subtract(valorDesconto);
     }
 
     public Peca getPeca() {
@@ -48,12 +54,12 @@ public class ItemPedido implements iPromoStrategy {
         this.quantidade = quantidade;
     }
 
-    public BigDecimal getValorItem() {
-        return valorItem;
+    public BigDecimal getValorTotal() {
+        return valorTotal;
     }
 
-    public void setValorItem(BigDecimal valorPedido) {
-        this.valorItem = valorPedido;
+    public void setValorTotal(BigDecimal valorPedido) {
+        this.valorTotal = valorPedido;
     }
 
     public BigDecimal getDesconto() {
@@ -69,7 +75,7 @@ public class ItemPedido implements iPromoStrategy {
         return "ItemPedido{" +
                 "peca=" + peca +
                 ", quantidade=" + quantidade +
-                ", valorItem=" + valorItem +
+                ", valorTotal=" + valorTotal +
                 ", desconto=" + desconto +
                 '}';
     }
