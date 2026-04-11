@@ -6,7 +6,6 @@ import java.io.OutputStream;
 import java.io.PrintStream;
 import java.math.BigDecimal;
 import java.time.LocalDate;
-
 import br.com.topcar.model.Peca;
 import br.com.topcar.model.utils.Car;
 
@@ -30,36 +29,41 @@ public class PecaOutputStream extends OutputStream {
 
         PrintStream opLocal = new PrintStream(op);
 
-        // envia quantidade de pessoas;
+        // envia quantidade de peças;
         int qtd_peca = pecas.length;
-        opLocal.println("Quantidade de pessoas: " + qtd_peca);
+        opLocal.println(qtd_peca);
 
         // envia os dados de um conjunto (array) de Pessoas
         for (Peca peca : this.pecas) {
             if (peca != null) {
                 int id = peca.getId();
+                
                 int tamanhoNomePeca = peca.getNome().getBytes().length;
                 String nome = peca.getNome();
+                
                 BigDecimal valor = peca.getValor();
+                String textovalor = valor.toString();
+                int bytesvalor = textovalor.getBytes().length;
+                
                 LocalDate data_fabricacao = peca.getData_fabricacao();
+                String texto_data = data_fabricacao.toString();
+                int bytesdata = texto_data.getBytes().length;
+
                 Car carro = peca.getCarro();
 
-                opLocal.println(" id: " + id + "\n" +
-                        " tamanho_nome: " + tamanhoNomePeca + "\n" +
-                        " nome da peça: " + nome + "\n" +
-                        " valor: " + valor + "\n" +
-                        " Data de fabricação : " + data_fabricacao + "\n" +
-                        " Carro: " + carro + "\n");
+                opLocal.println(id);
+                opLocal.println(tamanhoNomePeca);
+                opLocal.println(nome);
+                opLocal.println(bytesvalor);
+                opLocal.println(valor);
+                opLocal.println(bytesdata);
+                opLocal.println(data_fabricacao);
+                opLocal.println(carro.getNome());
+                opLocal.println(carro.getAno());
+                opLocal.println(carro.getModelo());
+                    
             }
         }
-    }
-
-    public void writeFile() {
-        // envia os dados de um conjunto (array) de Pessoas
-    }
-
-    public void writeTCP() {
-        // envia os dados de um conjunto (array) de Pessoas
     }
 
     @Override
