@@ -13,9 +13,17 @@ public class PecaOutputStream extends OutputStream {
 
     private OutputStream op;
     private Peca[] pecas;
+    private int numPecas;
     private final ByteArrayOutputStream buffer;
 
     public PecaOutputStream() {
+        this.buffer = new ByteArrayOutputStream();
+    }
+
+    public PecaOutputStream(OutputStream op, Peca[] pecas, int numObjetos){
+        this.op = op;
+        this.pecas = pecas;
+        this.numPecas = numObjetos;
         this.buffer = new ByteArrayOutputStream();
     }
 
@@ -30,21 +38,23 @@ public class PecaOutputStream extends OutputStream {
         PrintStream opLocal = new PrintStream(op);
 
         // envia quantidade de peças;
-        int qtd_peca = pecas.length;
-        opLocal.println(qtd_peca);
+
+
+        opLocal.println(this.numPecas);
 
         // envia os dados de um conjunto (array) de Pessoas
         for (Peca peca : this.pecas) {
             if (peca != null) {
+
                 int id = peca.getId();
-                
+
                 int tamanhoNomePeca = peca.getNome().getBytes().length;
                 String nome = peca.getNome();
-                
+
                 BigDecimal valor = peca.getValor();
                 String textovalor = valor.toString();
                 int bytesvalor = textovalor.getBytes().length;
-                
+
                 LocalDate data_fabricacao = peca.getData_fabricacao();
                 String texto_data = data_fabricacao.toString();
                 int bytesdata = texto_data.getBytes().length;
@@ -61,7 +71,7 @@ public class PecaOutputStream extends OutputStream {
                 opLocal.println(carro.getNome());
                 opLocal.println(carro.getAno());
                 opLocal.println(carro.getModelo());
-                    
+
             }
         }
     }
@@ -70,6 +80,7 @@ public class PecaOutputStream extends OutputStream {
     public void write(int b) throws IOException {
         // TODO Auto-generated method stub
         buffer.write(b);
+        op.write(b);
         // super.write(b);
     }
 

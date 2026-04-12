@@ -1,30 +1,25 @@
 import br.com.topcar.model.Peca;
-import br.com.topcar.model.Pedido;
-import br.com.topcar.model.user.Cliente;
 import br.com.topcar.io.*;
 import java.io.*;
 
 public class testeStreams {
     public static void main(String[] args) {
-        Peca[] pecas = {
-            CargaDeDadosStorage.amortecedor1,
-        };
+        Peca[] pecas = { CargaDeDadosStorage.amortecedor1 };
 
         try 
         {
-
             FileOutputStream fos = new FileOutputStream("pecas.txt");
             // FileOutputStream fos = new FileOutputStream("pecas.ser");
-            PecaOutputStream pos = new PecaOutputStream(fos, pecas);
+            PecaOutputStream pos = new PecaOutputStream(fos, pecas, pecas.length);
             pos.writeSystem();
             pos.close();
             fos.close();
 
-            
-            FileInputStream fis = new FileInputStream("person.txt");
+            FileInputStream fis = new FileInputStream("pecas.txt");
             PecaInputStream pis = new PecaInputStream(fis);
             // Peca deserializedPerson = (Peca) PecaInputStream.readObject();
-            pos.close();
+            Peca[] lidas = pis.readSystem();
+            pis.close();
             fis.close();
 
             // System.out.println("Nome: " + deserializedPerson.getName());
@@ -33,6 +28,5 @@ public class testeStreams {
             e.printStackTrace();
         }
 
-       
     }
 }

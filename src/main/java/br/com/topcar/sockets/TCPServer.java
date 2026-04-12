@@ -7,13 +7,15 @@ public class TCPServer {
     public static void main(String args[]) {
         try {
             System.out.println("Servidor iniciado");
-            int serverPort = 7896; // the server port
+            int serverPort = 7897; // the server port
             ServerSocket listenSocket = new ServerSocket(serverPort);
+
             while (true) {
                 Socket clientSocket = listenSocket.accept();
                 System.out.println(clientSocket.getInetAddress());
                 System.out.println("conexão estabelecida");
                 Connection c = new Connection(clientSocket);
+//                c.run();
             }
         } catch (IOException e) {
             System.out.println("Listen socket:" + e.getMessage());
@@ -39,7 +41,6 @@ class Connection extends Thread {
 
     public void run() {
         try { // an echo server
-
             String data = in.readUTF(); // read a line of data from the stream
             System.out.println(data);
             out.writeUTF(data.toUpperCase());

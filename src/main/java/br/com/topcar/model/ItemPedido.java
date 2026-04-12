@@ -32,9 +32,9 @@ public class ItemPedido implements iPromoStrategy {
     public BigDecimal aplicarDesconto(BigDecimal percentual) {
         percentual = percentual.divide(BigDecimal.valueOf(100), 2, RoundingMode.HALF_UP);
         BigDecimal valorDesconto = this.peca.getValor().multiply(percentual);
-        System.out.println("\n percentual de desconto: " + percentual);
-        System.out.println("\n valor desconto: " + valorDesconto);
-        System.out.println("\n valor com desconto: " + this.peca.getValor().subtract(valorDesconto));
+//        System.out.println("\n percentual de desconto: " + percentual);
+//        System.out.println("\n valor desconto: " + valorDesconto);
+//        System.out.println("\n valor com desconto: " + this.peca.getValor().subtract(valorDesconto));
         return this.peca.getValor().subtract(valorDesconto);
     }
 

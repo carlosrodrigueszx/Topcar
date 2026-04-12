@@ -47,7 +47,9 @@ public class CargaDeDadosStorage {
                         "a gás", "traseiro");
 
         public static final Amortecedor amortecedor5 = new Amortecedor(
-                        "hidráulico", "dianteiro");
+                4, "Amortecedor Traseiro a Gás Corolla",
+                BigDecimal.valueOf(560.00), LocalDate.now(), carHilux,
+                "a gás", "traseiro");
 
         // =========================================================
         // BATERIAS

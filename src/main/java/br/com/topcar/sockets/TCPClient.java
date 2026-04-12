@@ -8,7 +8,7 @@ public class TCPClient {
         // arguments supply message and hostname
         Socket s = null;
         try {
-            int serverPort = 7896;
+            int serverPort = 7897;
             s = new Socket("localhost", serverPort);
             DataInputStream in = new DataInputStream(s.getInputStream());
             DataOutputStream out = new DataOutputStream(s.getOutputStream());

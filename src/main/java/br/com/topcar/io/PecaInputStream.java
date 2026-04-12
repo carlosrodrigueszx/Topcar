@@ -3,11 +3,9 @@ package br.com.topcar.io;
 import java.io.BufferedReader;
 import java.io.IOException;
 import br.com.topcar.model.utils.Car;
-import br.com.topcar.model.utils.LocalDateUtil;
 import br.com.topcar.model.Peca;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.util.Scanner;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
@@ -15,62 +13,74 @@ public class PecaInputStream extends InputStream {
 
     private Peca[] pecas;
     private InputStream ins;
-
+    private BufferedReader bufferedReader;
     public PecaInputStream(InputStream ins) {
         this.ins = ins;
+        this.bufferedReader = new BufferedReader(new InputStreamReader(ins));
     }
 
     public Peca[] readSystem() throws IOException {
-        
-        BufferedReader leitor = new BufferedReader(new InputStreamReader(ins)); 
-        
-        int qtd_pecas = Integer.parseInt(leitor.readLine());
+        String linhaQtd = bufferedReader.readLine();
+        System.out.println("[DEBUG] qtd_pecas raw: '" + linhaQtd + "'");
+        int qtd_pecas = Integer.parseInt(linhaQtd);
 
         Peca[] pecas = new Peca[qtd_pecas];
 
+        for (int i = 0; i < qtd_pecas; i++) {
+            System.out.println("[DEBUG] ---- Peça " + i + " ----");
 
+            String linhaId = bufferedReader.readLine();
+            System.out.println("[DEBUG] id raw: '" + linhaId + "'");
+            int id = Integer.parseInt(linhaId);
 
-        for (int i=0; i < qtd_pecas; i++){
+            String linhaTamanhoNome = bufferedReader.readLine();
+            System.out.println("[DEBUG] tamanhoNome raw: '" + linhaTamanhoNome + "'");
+            int tamanhoNomePeca = Integer.parseInt(linhaTamanhoNome);
 
-            int id = Integer.parseInt(leitor.readLine());
-            
-            int tamanhoNomePeca = Integer.parseInt(leitor.readLine());
-            String nome = leitor.readLine();
+            String nome = bufferedReader.readLine();
+            System.out.println("[DEBUG] nome: '" + nome + "'");
 
-            int tamanhoValor = Integer.parseInt(leitor.readLine());
-            BigDecimal valor = new BigDecimal(leitor.readLine());
-            
-            int tamanhoData = Integer.parseInt(leitor.readLine());
-            LocalDate data_fabricacao = LocalDate.parse(leitor.readLine());
-            
-            String nomecar = leitor.readLine();
-            int anocar = Integer.parseInt(leitor.readLine());
-            String modelocar = leitor.readLine();
+            String linhaTamanhoValor = bufferedReader.readLine();
+            System.out.println("[DEBUG] tamanhoValor raw: '" + linhaTamanhoValor + "'");
+            int tamanhoValor = Integer.parseInt(linhaTamanhoValor);
 
-            Car carro = new Car(nomecar,anocar,modelocar);
-            pecas[i] = new Peca(id,nome,valor,data_fabricacao,carro);
+            String linhaValor = bufferedReader.readLine();
+            System.out.println("[DEBUG] valor raw: '" + linhaValor + "'");
+            BigDecimal valor = new BigDecimal(linhaValor);
 
+            String linhaTamanhoData = bufferedReader.readLine();
+            System.out.println("[DEBUG] tamanhoData raw: '" + linhaTamanhoData + "'");
+            int tamanhoData = Integer.parseInt(linhaTamanhoData);
 
+            String linhaData = bufferedReader.readLine();
+            System.out.println("[DEBUG] data_fabricacao raw: '" + linhaData + "'");
+            LocalDate data_fabricacao = LocalDate.parse(linhaData);
+
+            String nomecar = bufferedReader.readLine();
+            System.out.println("[DEBUG] nomecar: '" + nomecar + "'");
+
+            String linhaAno = bufferedReader.readLine();
+            System.out.println("[DEBUG] anocar raw: '" + linhaAno + "'");
+            int anocar = Integer.parseInt(linhaAno);
+
+            String modelocar = bufferedReader.readLine();
+            System.out.println("[DEBUG] modelocar: '" + modelocar + "'");
+
+            Car carro = new Car(nomecar, anocar, modelocar);
+            pecas[i] = new Peca(id, nome, valor, data_fabricacao, carro);
+
+            System.out.println("[DEBUG] Peça construída: " + pecas[i]);
         }
-        return pecas;
-
-    }
-
-    public Peca[] ReadFile() {
 
         return pecas;
-
     }
 
-    public Peca[] readTPC() {
+    public Peca[] ReadFile() throws IOException{ return readSystem(); }
 
-        return pecas;
-
-    }
+    public Peca[] readTCP() throws IOException{ return readSystem(); }
 
     @Override
     public int read() throws IOException {
-        return 0;
+        return ins.read(); // delegando para o stream original
     }
-
 }
