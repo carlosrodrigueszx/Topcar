@@ -8,6 +8,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.Scanner;
 
 public class PecaInputStream extends InputStream {
 
@@ -74,6 +75,53 @@ public class PecaInputStream extends InputStream {
 
         return pecas;
     }
+
+    
+    
+    
+    
+    public Peca[] readFromTerminal() {
+    Scanner sc = new Scanner(this.ins);
+
+    System.out.print("Quantidade de peças: ");
+    int qtd = Integer.parseInt(sc.nextLine());
+
+    Peca[] pecas = new Peca[qtd];
+
+    for (int i = 0; i < qtd; i++) {
+        System.out.println("\nPeça " + (i + 1));
+
+        System.out.print("ID: ");
+        int id = Integer.parseInt(sc.nextLine());
+
+        System.out.print("Nome: ");
+        String nome = sc.nextLine();
+
+        System.out.print("Valor: ");
+        BigDecimal valor = new BigDecimal(sc.nextLine());
+
+        System.out.print("Data de fabricação: ");
+        String data = sc.nextLine();
+        LocalDate data_formatada = LocalDate.parse(data);
+
+        System.out.print("Nome do carro: ");
+        String nomeCarro = sc.nextLine();
+
+        System.out.print("Ano do carro: ");
+        int anoCarro = Integer.parseInt(sc.nextLine());
+
+        System.out.print("Modelo do carro: ");
+        String modeloCarro = sc.nextLine();
+
+        Car carro = new Car(nomeCarro, anoCarro, modeloCarro);  
+        pecas[i] = new Peca(id, nome, valor, data_formatada, carro);
+    }
+
+    sc.close();
+    return pecas;
+}
+
+
 
     public Peca[] ReadFile() throws IOException{ return readSystem(); }
 
