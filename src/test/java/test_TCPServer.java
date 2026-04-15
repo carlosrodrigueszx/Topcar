@@ -20,7 +20,6 @@ public class test_TCPServer {
                 System.out.println(clientSocket.getInetAddress());
                 System.out.println("conexão estabelecida");
                 test_Connection c = new test_Connection(clientSocket);
-//                c.run();
             }
         } catch (IOException e) {
             System.out.println("Listen socket:" + e.getMessage());
@@ -60,7 +59,10 @@ class test_Connection extends Thread {
         } catch (IOException e) {
             System.out.println("Erro: " + e.getMessage());
         } finally {
-            try { clientSocket.close(); } catch (IOException e) {}
+            try {
+                clientSocket.close();
+            } catch (IOException e) {
+            }
         }
     }
 }

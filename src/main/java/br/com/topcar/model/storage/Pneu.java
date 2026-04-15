@@ -25,7 +25,6 @@ public class Pneu extends Peca {
         this.indiceTraction = indiceTraction;
     }
 
-    // Getters e Setters
     public String getDimensoes() {
         return dimensoes;
     }

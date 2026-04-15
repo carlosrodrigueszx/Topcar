@@ -7,13 +7,11 @@ public class testeSOUT {
         Peca[] pecas = { CargaDeDadosStorage.amortecedor1 };
 
         try {
-            // Teste 1: saída padrão
             System.out.println("=== Saída padrão ===");
             PecaOutputStream posSOUT = new PecaOutputStream(System.out, pecas, pecas.length);
             posSOUT.writeSystem();
             posSOUT.close();
 
-            // Teste 2: arquivo
             System.out.println("=== Escrevendo arquivo ===");
             FileOutputStream fos = new FileOutputStream("pecas.txt");
             PecaOutputStream posFILE = new PecaOutputStream(fos, pecas, pecas.length);
@@ -21,7 +19,6 @@ public class testeSOUT {
             posFILE.close();
             fos.close();
 
-            // Teste 3: lendo arquivo
             System.out.println("=== Lendo arquivo ===");
             FileInputStream fis = new FileInputStream("pecas.txt");
             PecaInputStream pis = new PecaInputStream(fis);

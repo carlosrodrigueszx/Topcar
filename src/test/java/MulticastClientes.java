@@ -1,5 +1,3 @@
-package br.com.topcar.sockets;
-
 import java.net.DatagramPacket;
 import java.net.InetAddress;
 import java.net.InetSocketAddress;

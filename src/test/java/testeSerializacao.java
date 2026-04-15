@@ -1,5 +1,4 @@
 
-
 import br.com.topcar.io.replyResponseSerializable;
 import br.com.topcar.io.requestResponseSerializable;
 import br.com.topcar.sockets.ConnectionObjeto;
@@ -20,7 +19,6 @@ public class testeSerializacao {
         System.out.println("Iniciando testes da Questao 4...");
 
         try {
-            // Teste 1: TCP texto (uppercase)
             System.out.println("=== Teste 1: TCP texto ===");
             try (ServerSocket server = new ServerSocket(0)) {
                 int port = server.getLocalPort();
@@ -36,8 +34,8 @@ public class testeSerializacao {
                 acceptThread.start();
 
                 try (Socket client = new Socket("localhost", port);
-                     DataOutputStream out = new DataOutputStream(client.getOutputStream());
-                     DataInputStream in = new DataInputStream(client.getInputStream())) {
+                        DataOutputStream out = new DataOutputStream(client.getOutputStream());
+                        DataInputStream in = new DataInputStream(client.getInputStream())) {
 
                     String enviado = "sistemas_distribuidos";
                     out.writeUTF(enviado);
@@ -45,13 +43,13 @@ public class testeSerializacao {
 
                     String recebido = in.readUTF();
                     if (!"SISTEMAS_DISTRIBUIDOS".equals(recebido)) {
-                        throw new IllegalStateException("Teste 1 falhou. Esperado: SISTEMAS_DISTRIBUIDOS, recebido: " + recebido);
+                        throw new IllegalStateException(
+                                "Teste 1 falhou. Esperado: SISTEMAS_DISTRIBUIDOS, recebido: " + recebido);
                     }
                 }
             }
             System.out.println("OK - Teste 1");
 
-            // Teste 2: TCP objeto serializavel
             System.out.println("=== Teste 2: TCP objeto ===");
             try (ServerSocket server = new ServerSocket(0)) {
                 int port = server.getLocalPort();
@@ -67,8 +65,8 @@ public class testeSerializacao {
                 acceptThread.start();
 
                 try (Socket client = new Socket("localhost", port);
-                     ObjectOutputStream out = new ObjectOutputStream(client.getOutputStream());
-                     ObjectInputStream in = new ObjectInputStream(client.getInputStream())) {
+                        ObjectOutputStream out = new ObjectOutputStream(client.getOutputStream());
+                        ObjectInputStream in = new ObjectInputStream(client.getInputStream())) {
 
                     requestResponseSerializable req = new requestResponseSerializable(
                             "CONSULTAR",
@@ -94,7 +92,6 @@ public class testeSerializacao {
             }
             System.out.println("OK - Teste 2");
 
-    
             System.out.println("Todos os testes passaram.");
 
         } catch (Exception e) {

@@ -15,6 +15,7 @@ public class PecaInputStream extends InputStream {
     private Peca[] pecas;
     private InputStream ins;
     private BufferedReader bufferedReader;
+
     public PecaInputStream(InputStream ins) {
         this.ins = ins;
         this.bufferedReader = new BufferedReader(new InputStreamReader(ins));
@@ -76,56 +77,54 @@ public class PecaInputStream extends InputStream {
         return pecas;
     }
 
-    
-    
-    
-    
     public Peca[] readFromTerminal() {
-    Scanner sc = new Scanner(this.ins);
+        Scanner sc = new Scanner(this.ins);
 
-    System.out.print("Quantidade de peças: ");
-    int qtd = Integer.parseInt(sc.nextLine());
+        System.out.print("Quantidade de peças: ");
+        int qtd = Integer.parseInt(sc.nextLine());
 
-    Peca[] pecas = new Peca[qtd];
+        Peca[] pecas = new Peca[qtd];
 
-    for (int i = 0; i < qtd; i++) {
-        System.out.println("\nPeça " + (i + 1));
+        for (int i = 0; i < qtd; i++) {
+            System.out.println("\nPeça " + (i + 1));
 
-        System.out.print("ID: ");
-        int id = Integer.parseInt(sc.nextLine());
+            System.out.print("ID: ");
+            int id = Integer.parseInt(sc.nextLine());
 
-        System.out.print("Nome: ");
-        String nome = sc.nextLine();
+            System.out.print("Nome: ");
+            String nome = sc.nextLine();
 
-        System.out.print("Valor: ");
-        BigDecimal valor = new BigDecimal(sc.nextLine());
+            System.out.print("Valor: ");
+            BigDecimal valor = new BigDecimal(sc.nextLine());
 
-        System.out.print("Data de fabricação: ");
-        String data = sc.nextLine();
-        LocalDate data_formatada = LocalDate.parse(data);
+            System.out.print("Data de fabricação: ");
+            String data = sc.nextLine();
+            LocalDate data_formatada = LocalDate.parse(data);
 
-        System.out.print("Nome do carro: ");
-        String nomeCarro = sc.nextLine();
+            System.out.print("Nome do carro: ");
+            String nomeCarro = sc.nextLine();
 
-        System.out.print("Ano do carro: ");
-        int anoCarro = Integer.parseInt(sc.nextLine());
+            System.out.print("Ano do carro: ");
+            int anoCarro = Integer.parseInt(sc.nextLine());
 
-        System.out.print("Modelo do carro: ");
-        String modeloCarro = sc.nextLine();
+            System.out.print("Modelo do carro: ");
+            String modeloCarro = sc.nextLine();
 
-        Car carro = new Car(nomeCarro, anoCarro, modeloCarro);  
-        pecas[i] = new Peca(id, nome, valor, data_formatada, carro);
+            Car carro = new Car(nomeCarro, anoCarro, modeloCarro);
+            pecas[i] = new Peca(id, nome, valor, data_formatada, carro);
+        }
+
+        sc.close();
+        return pecas;
     }
 
-    sc.close();
-    return pecas;
-}
+    public Peca[] ReadFile() throws IOException {
+        return readSystem();
+    }
 
-
-
-    public Peca[] ReadFile() throws IOException{ return readSystem(); }
-
-    public Peca[] readTCP() throws IOException{ return readSystem(); }
+    public Peca[] readTCP() throws IOException {
+        return readSystem();
+    }
 
     @Override
     public int read() throws IOException {

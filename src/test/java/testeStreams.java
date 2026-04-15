@@ -6,10 +6,8 @@ public class testeStreams {
     public static void main(String[] args) {
         Peca[] pecas = { CargaDeDadosStorage.amortecedor1 };
 
-        try 
-        {
+        try {
             FileOutputStream fos = new FileOutputStream("pecas.txt");
-            // FileOutputStream fos = new FileOutputStream("pecas.ser");
             PecaOutputStream pos = new PecaOutputStream(fos, pecas, pecas.length);
             pos.writeSystem();
             pos.close();
@@ -17,13 +15,10 @@ public class testeStreams {
 
             FileInputStream fis = new FileInputStream("pecas.txt");
             PecaInputStream pis = new PecaInputStream(fis);
-            // Peca deserializedPerson = (Peca) PecaInputStream.readObject();
             Peca[] lidas = pis.readSystem();
             pis.close();
             fis.close();
 
-            // System.out.println("Nome: " + deserializedPerson.getName());
-            // System.out.println(": " + deserializedPerson.getAge());
         } catch (IOException e) {
             e.printStackTrace();
         }

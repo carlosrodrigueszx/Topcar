@@ -16,11 +16,9 @@ public class test_TCPClient {
 
             Peca[] pecas = { CargaDeDadosStorage.amortecedor1 };
 
-            // Envia as peças pelo socket usando PecaOutputStream
             PecaOutputStream pos = new PecaOutputStream(s.getOutputStream(), pecas, pecas.length);
             pos.writeSystem();
 
-            // Lê as peças de volta do servidor usando PecaInputStream
             PecaInputStream pis = new PecaInputStream(s.getInputStream());
             Peca[] recebidas = pis.readTCP();
 

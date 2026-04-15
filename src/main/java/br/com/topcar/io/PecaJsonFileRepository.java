@@ -18,19 +18,25 @@ public class PecaJsonFileRepository {
     }
 
     public Peca[] carregar(Path arquivo) throws IOException {
-        if (!Files.exists(arquivo)) return new Peca[0];
+        if (!Files.exists(arquivo))
+            return new Peca[0];
         String json = Files.readString(arquivo, StandardCharsets.UTF_8).trim();
-        if (json.isEmpty() || "[]".equals(json)) return new Peca[0];
+        if (json.isEmpty() || "[]".equals(json))
+            return new Peca[0];
 
         List<Peca> lista = new ArrayList<>();
         for (String obj : splitObjetos(json)) {
             int id = Integer.parseInt(valor(obj, "id"));
             String nome = valor(obj, "nome");
+
             BigDecimal valor = new BigDecimal(valor(obj, "valor"));
             LocalDate data = LocalDate.parse(valor(obj, "data"));
+
             String carroNome = valor(obj, "carro_nome");
             int carroAno = Integer.parseInt(valor(obj, "carro_ano"));
+
             String carroModelo = valor(obj, "carro_modelo");
+
             lista.add(new Peca(id, nome, valor, data, new Car(carroNome, carroAno, carroModelo)));
         }
         return lista.toArray(new Peca[0]);
@@ -41,14 +47,15 @@ public class PecaJsonFileRepository {
         for (int i = 0; i < pecas.length; i++) {
             Peca p = pecas[i];
             sb.append("  {\"id\":").append(p.getId())
-              .append(",\"nome\":\"").append(p.getNome())
-              .append("\",\"valor\":\"").append(p.getValor())
-              .append("\",\"data\":\"").append(p.getData_fabricacao())
-              .append("\",\"carro_nome\":\"").append(p.getCarro().getNome())
-              .append("\",\"carro_ano\":").append(p.getCarro().getAno())
-              .append(",\"carro_modelo\":\"").append(p.getCarro().getModelo())
-              .append("\"}");
-            if (i < pecas.length - 1) sb.append(",");
+                    .append(",\"nome\":\"").append(p.getNome())
+                    .append("\",\"valor\":\"").append(p.getValor())
+                    .append("\",\"data\":\"").append(p.getData_fabricacao())
+                    .append("\",\"carro_nome\":\"").append(p.getCarro().getNome())
+                    .append("\",\"carro_ano\":").append(p.getCarro().getAno())
+                    .append(",\"carro_modelo\":\"").append(p.getCarro().getModelo())
+                    .append("\"}");
+            if (i < pecas.length - 1)
+                sb.append(",");
             sb.append("\n");
         }
         return sb.append("]").toString();
@@ -61,11 +68,13 @@ public class PecaJsonFileRepository {
         for (int i = 0; i < corpo.length(); i++) {
             char c = corpo.charAt(i);
             if (c == '{') {
-                if (depth == 0) ini = i;
+                if (depth == 0)
+                    ini = i;
                 depth++;
             } else if (c == '}') {
                 depth--;
-                if (depth == 0) out.add(corpo.substring(ini, i + 1));
+                if (depth == 0)
+                    out.add(corpo.substring(ini, i + 1));
             }
         }
         return out;
@@ -74,7 +83,8 @@ public class PecaJsonFileRepository {
     private String valor(String obj, String campo) {
         String chave = "\"" + campo + "\":";
         int i = obj.indexOf(chave);
-        if (i < 0) throw new IllegalStateException("Campo nao encontrado: " + campo);
+        if (i < 0)
+            throw new IllegalStateException("Campo nao encontrado: " + campo);
         i += chave.length();
 
         if (obj.charAt(i) == '"') {
@@ -83,7 +93,10 @@ public class PecaJsonFileRepository {
         }
 
         int j = obj.indexOf(',', i);
-        if (j < 0) j = obj.indexOf('}', i);
+
+        if (j < 0)
+            j = obj.indexOf('}', i);
+
         return obj.substring(i, j).trim();
     }
 }
