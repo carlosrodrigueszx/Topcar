@@ -1,6 +1,6 @@
 package br.com.topcar.service.interfaces.buy;
 
-import br.com.topcar.model.Pedido;
+import br.com.topcar.model.entity.historico.Pedido;
 
 public interface iCompra {
     void efetuarPedido(Pedido pedido);

@@ -1,8 +1,13 @@
-import br.com.topcar.model.Peca;
-import br.com.topcar.io.*;
+package Streams;
+
+import Load.CargaDeDadosStorage;
+import br.com.topcar.io.streams.PecaInputStream;
+import br.com.topcar.io.streams.PecaOutputStream;
+import br.com.topcar.model.entity.Peca;
+
 import java.io.*;
 
-public class testeSOUT {
+public class tSOUT {
     public static void main(String[] args) {
         Peca[] pecas = { CargaDeDadosStorage.amortecedor1 };
 

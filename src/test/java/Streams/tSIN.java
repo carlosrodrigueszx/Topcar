@@ -1,7 +1,9 @@
-import br.com.topcar.io.PecaInputStream;
-import br.com.topcar.model.Peca;
+package Streams;
 
-public class testeSIN {
+import br.com.topcar.io.streams.PecaInputStream;
+import br.com.topcar.model.entity.Peca;
+
+public class tSIN {
     public static void main(String[] args) {
         try {
             System.out.println("Digite os dados exatamente no formato esperado pelo stream:");

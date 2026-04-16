@@ -1,9 +1,9 @@
-package br.com.topcar.io;
+package br.com.topcar.io.streams;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import br.com.topcar.model.utils.Car;
-import br.com.topcar.model.Peca;
+import br.com.topcar.model.entity.Peca;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.math.BigDecimal;

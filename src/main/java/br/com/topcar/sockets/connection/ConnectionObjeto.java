@@ -1,7 +1,7 @@
-package br.com.topcar.sockets;
+package br.com.topcar.sockets.connection;
 
-import br.com.topcar.io.replyResponseSerializable;
-import br.com.topcar.io.requestResponseSerializable;
+import br.com.topcar.io.responses.replyResponseSerializable;
+import br.com.topcar.io.responses.requestResponseSerializable;
 
 import java.io.EOFException;
 import java.io.IOException;

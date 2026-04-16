@@ -1,4 +1,4 @@
-package br.com.topcar.model;
+package br.com.topcar.model.entity.historico;
 
 import java.util.ArrayList;
 import java.util.List;

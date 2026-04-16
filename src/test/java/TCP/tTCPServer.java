@@ -1,9 +1,9 @@
-import br.com.topcar.io.PecaInputStream;
-import br.com.topcar.io.PecaOutputStream;
-import br.com.topcar.model.Peca;
+package TCP;
 
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
+import br.com.topcar.io.streams.PecaInputStream;
+import br.com.topcar.io.streams.PecaOutputStream;
+import br.com.topcar.model.entity.Peca;
+
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;

@@ -1,7 +1,7 @@
-package br.com.topcar.sockets;
+package br.com.topcar.sockets.TCP;
 
-import br.com.topcar.io.replyResponseSerializable;
-import br.com.topcar.io.requestResponseSerializable;
+import br.com.topcar.io.responses.replyResponseSerializable;
+import br.com.topcar.io.responses.requestResponseSerializable;
 
 import java.net.*;
 import java.io.*;
@@ -16,7 +16,6 @@ public class TCPClient {
     }
 
     public static void TextoStreams(String args[]) {
-        // arguments supply message and hostname
         Socket s = null;
         try {
             int serverPort = 7897;
@@ -70,9 +69,7 @@ public class TCPClient {
         }
         catch (ClassNotFoundException e) {
             System.out.println("Class not found:" + e.getMessage());
-        }
-        
-        finally {
+        } finally {
             if (s != null)
                 try {
                     s.close();

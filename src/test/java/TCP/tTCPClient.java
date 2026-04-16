@@ -1,13 +1,16 @@
-import br.com.topcar.io.PecaInputStream;
-import br.com.topcar.io.PecaOutputStream;
-import br.com.topcar.model.Peca;
+package TCP;
+
+import Load.CargaDeDadosStorage;
+import br.com.topcar.io.streams.PecaInputStream;
+import br.com.topcar.io.streams.PecaOutputStream;
+import br.com.topcar.model.entity.Peca;
 
 import java.io.EOFException;
 import java.io.IOException;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
-public class test_TCPClient {
+public class tTCPClient {
     public static void main(String args[]) {
         Socket s = null;
         try {

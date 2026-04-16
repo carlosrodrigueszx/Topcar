@@ -1,4 +1,4 @@
-package br.com.topcar.model;
+package br.com.topcar.model.entity;
 
 import br.com.topcar.model.utils.Car;
 

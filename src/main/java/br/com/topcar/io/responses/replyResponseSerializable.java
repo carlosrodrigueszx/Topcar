@@ -1,4 +1,4 @@
-package br.com.topcar.io;
+package br.com.topcar.io.responses;
 
 import java.io.Serializable;
 import java.time.LocalDate;

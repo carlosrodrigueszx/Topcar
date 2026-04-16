@@ -1,17 +1,11 @@
-package br.com.topcar.sockets;
+package br.com.topcar.sockets.TCP;
 
-import br.com.topcar.io.replyResponseSerializable;
-import br.com.topcar.io.requestResponseSerializable;
-import br.com.topcar.sockets.ConnectionObjeto;
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.EOFException;
+import br.com.topcar.sockets.connection.ConnectionObjeto;
+import br.com.topcar.sockets.connection.ConnectionTexto;
+
 import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.time.LocalDate;
 
 public class TCPServer {
     public static void main(String[] args) {

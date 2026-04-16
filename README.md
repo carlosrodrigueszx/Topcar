@@ -35,7 +35,7 @@ src/
             │   │   └── Cliente.java           # Representa um cliente com pedidos
             │   └── utils/
             │       └── Car.java               # Representa o veículo associado à peça
-            └── CargaDeDadosStorage.java       # Dados de teste (5 clientes, pedidos e peças)
+            └── Load.CargaDeDadosStorage.java       # Dados de teste (5 clientes, pedidos e peças)
 ```
 
 ---
@@ -126,7 +126,7 @@ java -cp out br.com.topcar.client.PecaClient
 
 ## 📦 Dados de Teste
 
-A classe `CargaDeDadosStorage` fornece dados pré-carregados para testes:
+A classe `Load.CargaDeDadosStorage` fornece dados pré-carregados para testes:
 
 - **8 veículos**: CrossFox, Gol, Corolla, Hilux, Civic, Mobi, Ranger, Sandero
 - **5 amortecedores**, **5 baterias**, **5 faróis**, **5 motores**, **5 pneus**

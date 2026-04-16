@@ -1,6 +1,6 @@
 package br.com.topcar.model.storage;
 
-import br.com.topcar.model.Peca;
+import br.com.topcar.model.entity.Peca;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import br.com.topcar.model.utils.Car;

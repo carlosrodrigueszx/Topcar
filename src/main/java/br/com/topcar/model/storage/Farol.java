@@ -3,7 +3,7 @@ package br.com.topcar.model.storage;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-import br.com.topcar.model.Peca;
+import br.com.topcar.model.entity.Peca;
 import br.com.topcar.model.utils.Car;
 
 public class Farol extends Peca {

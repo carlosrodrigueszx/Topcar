@@ -1,5 +1,6 @@
-package br.com.topcar.model;
+package br.com.topcar.model.entity.historico;
 
+import br.com.topcar.model.entity.Peca;
 import br.com.topcar.service.interfaces.strategy.iPromoStrategy;
 
 import java.math.BigDecimal;

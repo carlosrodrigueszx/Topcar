@@ -1,4 +1,4 @@
-package br.com.topcar.sockets;
+package br.com.topcar.sockets.connection;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;

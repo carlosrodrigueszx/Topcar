@@ -1,9 +1,12 @@
-import br.com.topcar.io.PecaJsonFileRepository;
-import br.com.topcar.model.Peca;
+package JSON;
+
+import Load.CargaDeDadosStorage;
+import br.com.topcar.io.json.PecaJsonFileRepository;
+import br.com.topcar.model.entity.Peca;
 
 import java.nio.file.Path;
 
-public class testeJSONArquivo {
+public class tJSONFile {
     public static void main(String[] args) {
         try {
             Peca[] pecasOriginais = {

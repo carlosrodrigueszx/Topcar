@@ -1,7 +1,9 @@
-import br.com.topcar.model.ItemPedido;
-import br.com.topcar.model.Pedido;
+package Load;
+
+import br.com.topcar.model.entity.historico.ItemPedido;
+import br.com.topcar.model.entity.historico.Pedido;
 import br.com.topcar.model.storage.*;
-import br.com.topcar.model.user.Cliente;
+import br.com.topcar.model.entity.Cliente;
 import br.com.topcar.model.utils.Car;
 
 import java.math.BigDecimal;

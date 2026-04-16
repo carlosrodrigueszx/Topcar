@@ -1,6 +1,6 @@
-package br.com.topcar.model.user;
+package br.com.topcar.model.entity;
 
-import br.com.topcar.model.Pedido;
+import br.com.topcar.model.entity.historico.Pedido;
 import br.com.topcar.service.interfaces.buy.iCompra;
 
 import java.util.ArrayList;

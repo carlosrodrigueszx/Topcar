@@ -1,3 +1,5 @@
+package Multicast;
+
 import java.net.DatagramPacket;
 import java.net.InetAddress;
 import java.net.InetSocketAddress;
@@ -5,7 +7,7 @@ import java.net.MulticastSocket;
 import java.net.NetworkInterface;
 import java.nio.charset.StandardCharsets;
 
-public class MulticastClientes {
+public class tMulticastClients {
     public static void main(String[] args) {
         String groupIp = "230.0.0.10";
         int port = 7899;

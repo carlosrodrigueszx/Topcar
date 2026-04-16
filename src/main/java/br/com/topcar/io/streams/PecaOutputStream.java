@@ -1,4 +1,4 @@
-package br.com.topcar.io;
+package br.com.topcar.io.streams;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -6,7 +6,7 @@ import java.io.OutputStream;
 import java.io.PrintStream;
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import br.com.topcar.model.Peca;
+import br.com.topcar.model.entity.Peca;
 import br.com.topcar.model.utils.Car;
 
 public class PecaOutputStream extends OutputStream {

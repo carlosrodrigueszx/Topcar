@@ -1,20 +1,18 @@
+package Serializable;
 
-import br.com.topcar.io.replyResponseSerializable;
-import br.com.topcar.io.requestResponseSerializable;
-import br.com.topcar.sockets.ConnectionObjeto;
-import br.com.topcar.sockets.ConnectionTexto;
+import br.com.topcar.io.responses.replyResponseSerializable;
+import br.com.topcar.io.responses.requestResponseSerializable;
+import br.com.topcar.sockets.connection.ConnectionObjeto;
+import br.com.topcar.sockets.connection.ConnectionTexto;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.time.LocalDate;
 
-public class testeSerializacao {
+public class tSerializacao {
     public static void main(String[] args) {
         System.out.println("Iniciando testes da Questao 4...");
 
