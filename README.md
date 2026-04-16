@@ -162,5 +162,8 @@ A classe `CargaDeDadosStorage` fornece dados pré-carregados para testes:
 ---
 
 ## 👨‍💻 Autores
+- Lucas
+- Daniel
 
+## Créditos
 Desenvolvido como parte da disciplina de **Sistemas Distribuídos** — UFC Quixadá.
