@@ -35,7 +35,7 @@ src/
             │   │   └── Cliente.java           # Representa um cliente com pedidos
             │   └── utils/
             │       └── Car.java               # Representa o veículo associado à peça
-            └── Load.CargaDeDadosStorage.java       # Dados de teste (5 clientes, pedidos e peças)
+            └── CargaDeDadosStorage.java       # Dados de teste (5 clientes, pedidos e peças)
 ```
 
 ---
@@ -89,14 +89,14 @@ Implementação de `PecaInputStream` (subclasse de `InputStream`) que lê e reco
 Comunicação cliente-servidor com empacotamento e desempacotamento de mensagens:
 - Cliente serializa a requisição antes de enviar
 - Servidor desempacota, processa e empacota a resposta
-- Comunicação via **TCP**
+- Comunicação via **TCP** ou **UDP**
 
-### Exercício 5 — Sistema de Votações (Representação Externa de Dados)
-Aplicação distribuída de votações com:
-- Login de eleitores via **unicast TCP**
-- Envio de lista de candidatos e votos via **unicast TCP**
-- Notas informativas dos administradores via **multicast UDP**
-- Prazo máximo para votação com cálculo de resultados
+### Exercício 5 — Requisição de Peças (adaptado ao TopCar)
+Aplicação distribuída de requisição de peças com:
+- Login de clientes via **unicast TCP**
+- Envio do catálogo de peças disponíveis via **unicast TCP**
+- Cliente envia um objeto `Peca` como requisição ao servidor
+- Notificações dos administradores (ex: novas peças, promoções) via **multicast UDP**
 - Representação externa via **Protocol Buffers**, XML ou JSON
 - Servidor **multi-threaded**
 
@@ -126,7 +126,7 @@ java -cp out br.com.topcar.client.PecaClient
 
 ## 📦 Dados de Teste
 
-A classe `Load.CargaDeDadosStorage` fornece dados pré-carregados para testes:
+A classe `CargaDeDadosStorage` fornece dados pré-carregados para testes:
 
 - **8 veículos**: CrossFox, Gol, Corolla, Hilux, Civic, Mobi, Ranger, Sandero
 - **5 amortecedores**, **5 baterias**, **5 faróis**, **5 motores**, **5 pneus**
@@ -138,10 +138,10 @@ A classe `Load.CargaDeDadosStorage` fornece dados pré-carregados para testes:
 ## 🏛️ Arquitetura de Comunicação
 
 ```
-┌──────────────┐        TCP / UDP                ┌──────────────┐
-│    Cliente   │ ──── request (serialized) ───►  │   Servidor   │
-│              │ ◄─── reply (serialized) ────    │(multi-thread)│
-└──────────────┘                                 └──────────────┘
+┌──────────────┐        TCP / UDP        ┌──────────────┐
+│    Cliente   │ ──── request (serialized) ───► │   Servidor   │
+│              │ ◄─── reply (serialized) ──── │ (multi-thread)│
+└──────────────┘                         └──────────────┘
                            │
                     Multicast UDP
                     (notas admin)
@@ -163,4 +163,4 @@ A classe `Load.CargaDeDadosStorage` fornece dados pré-carregados para testes:
 
 ## 👨‍💻 Autores
 
-Desenvolvido como parte da disciplina de **Sistemas Distribuídos** — UFC Quixadá por Lucas e Daniel.
+Desenvolvido como parte da disciplina de **Sistemas Distribuídos** — UFC Quixadá.
